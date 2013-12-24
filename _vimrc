@@ -2,8 +2,7 @@
 " set termencoding=utf-8
 " set langmenu=zh_cn.utf-8
 " language messages zh_cn.utf-8 
-set background=dark
-colorscheme darkblue
+
 " for macvim
 if has("gui_running")
     set go=aAce  " remove toolbar
@@ -75,7 +74,10 @@ set tabstop=8                                                " actual tabs occup
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
-set tags=tags;/
+set tags=.tags,tags;/
+set autochdir
+set background=dark
+colorscheme solarized
 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a

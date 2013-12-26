@@ -2,6 +2,9 @@
 " set termencoding=utf-8
 " set langmenu=zh_cn.utf-8
 " language messages zh_cn.utf-8 
+" 高亮显示当前行/列
+set cursorline
+set cursorcolumn
 
 " for macvim
 if has("gui_running")
@@ -66,7 +69,7 @@ set number                                                   " show line numbers
 set number                                                   " show line numbers
 set ruler                                                    " show where you are
 set scrolloff=3                                              " show context above/below cursorline
-set shiftwidth=2                                             " normal mode indentation commands use 2 spaces
+set shiftwidth=4                                             " normal mode indentation commands use 4 spaces
 set showcmd
 set smartcase                                                " case-sensitive search if any caps
 set softtabstop=2                                            " insert mode tab and backspace use 2 spaces

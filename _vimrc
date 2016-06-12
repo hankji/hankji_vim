@@ -81,6 +81,9 @@ set tags=.tags,tags;/
 set autochdir
 set background=dark
 colorscheme solarized
+"set guifont=Source\ Code\ Pro\ Semibold:h14
+"let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled = 1
 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a

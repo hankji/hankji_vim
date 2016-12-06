@@ -1,19 +1,21 @@
 " gvim config
-" set termencoding=utf-8
-" set langmenu=zh_cn.utf-8
-" language messages zh_cn.utf-8
+set termencoding=utf-8
+set langmenu=zh_cn.utf-8
+language messages zh_cn.utf-8 
 " 高亮显示当前行/列
 set cursorline
 set cursorcolumn
 
 " for macvim
 if has("gui_running")
-    set go=aAce  " remove toolbar
+    source $VIMRUNTIME/mswin.vim
+    " set go=aAce  " remove toolbar
+    set go=Ace  " remove toolbar
     "set transparency=30
     set guifont=Monaco:h13
     set showtabline=2
-    set columns=140
-    set lines=40
+    winpos 60 100
+    set lines=30 columns=120
     noremap <D-M-Left> :tabprevious<cr>
     noremap <D-M-Right> :tabnext<cr>
     map <D-1> 1gt
@@ -45,9 +47,9 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " install Vundle bundles
-if filereadable(expand("D:\\program\\Vim\\vimrc.bundles"))
-  source D:\\program\\Vim\\vimrc.bundles
-  source D:\\program\\Vim\\vimrc.bundles.local
+if filereadable(expand("D:\\programe\\Vim\\hankji_vim\\vimrc.bundles"))
+  source D:\\programe\\Vim\\hankji_vim\\vimrc.bundles
+  source D:\\programe\\Vim\\hankji_vim\\vimrc.bundles.local
 endif
 
 " ensure ftdetect et al work by including this after the Vundle stuff
@@ -81,9 +83,27 @@ set tags=.tags,tags;/
 set autochdir
 set background=dark
 colorscheme solarized
-"set guifont=Source\ Code\ Pro\ Semibold:h14
+set guifont=Source\ Code\ Pro\ Semibold:h14
+set encoding=utf-8
 "let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
+"set guifont=Consolas\ for\ Powerline\ FixedD:h11
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+" old vim-powerline symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
@@ -163,11 +183,10 @@ if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
-let g:vimwiki_list=[{'path':'D:\GoogleDrive\Google Drive\wiki\vimwiki','path_html':'D:\GoogleDrive\Google Drive\wiki\vimwiki\html',
-            \ 'auto_export': 1, 'template_path': 'D:\GoogleDrive\Google Drive\wiki\vimwiki\template\',
+let g:vimwiki_list=[{'path':'D:\adminwork\wiki\vimwiki','path_html':'D:\adminwork\wiki\vimwiki\html',
+            \ 'auto_export': 1, 'template_path': 'D:\adminwork\wiki\vimwiki\template\',
             \ 'template_default': 'def_template',
-            \ 'template_ext': '.html',
-            \ "syntax": "markdown"}]
+            \ 'template_ext': '.html'}]
 
 map <S-F4> :VimwikiAll2HTML<cr>
 map <F4> :Vimwiki2HTML<cr>

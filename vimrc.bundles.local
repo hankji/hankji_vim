@@ -1,4 +1,5 @@
-Bundle 'Lokaltog/vim-powerline'
+" Bundle 'Lokaltog/vim-powerline'
+Bundle 'vim-airline/vim-airline'
 Bundle 'terryma/vim-multiple-cursors'
 " Bundle 'valloric/youcompleteme'
 " Bundle 'bling/vim-airline'

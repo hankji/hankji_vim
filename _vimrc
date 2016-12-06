@@ -1,7 +1,7 @@
 " gvim config
 " set termencoding=utf-8
 " set langmenu=zh_cn.utf-8
-" language messages zh_cn.utf-8 
+" language messages zh_cn.utf-8
 " 高亮显示当前行/列
 set cursorline
 set cursorcolumn
@@ -163,7 +163,8 @@ endif
 let g:vimwiki_list=[{'path':'D:\GoogleDrive\Google Drive\wiki\vimwiki','path_html':'D:\GoogleDrive\Google Drive\wiki\vimwiki\html',
             \ 'auto_export': 1, 'template_path': 'D:\GoogleDrive\Google Drive\wiki\vimwiki\template\',
             \ 'template_default': 'def_template',
-            \ 'template_ext': '.html'}]
+            \ 'template_ext': '.html',
+            \ "syntax": "markdown"}]
 
 map <S-F4> :VimwikiAll2HTML<cr>
 map <F4> :Vimwiki2HTML<cr>

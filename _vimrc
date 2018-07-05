@@ -137,6 +137,7 @@ let g:gitgutter_enabled = 0
 
 " enable gtags module
 " let g:gutentags_trace = 1
+set cscopeprg='gtags-cscope'
 let g:gutentags_modules = ['ctags', 'gtags_cscope']
 " config project root markers.
 let g:gutentags_project_root = ['.git','.root']

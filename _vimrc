@@ -1,38 +1,8 @@
-" gvim config
-set termencoding=utf-8
-set langmenu=zh_cn.utf-8
-language messages zh_cn.utf-8 
-" 高亮显示当前行/列
-set cursorline
-set cursorcolumn
-
-" for macvim
-if has("gui_running")
-    source $VIMRUNTIME/mswin.vim
-    " set go=aAce  " remove toolbar
-    set go=Ace  " remove toolbar
-    "set transparency=30
-    set guifont=Monaco:h13
-    set showtabline=2
-    winpos 60 100
-    set lines=30 columns=120
-    noremap <D-M-Left> :tabprevious<cr>
-    noremap <D-M-Right> :tabnext<cr>
-    map <D-1> 1gt
-    map <D-2> 2gt
-    map <D-3> 3gt
-    map <D-4> 4gt
-    map <D-5> 5gt
-    map <D-6> 6gt
-    map <D-7> 7gt
-    map <D-8> 8gt
-    map <D-9> 9gt
-    map <D-0> :tablast<CR>
+" temporary fix
+" https://github.com/vim/vim/issues/3117
+if has('python3') && !has('patch-8.1.201')
+  silent! python3 1
 endif
-
-" encoding dectection
-set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
-set fileencoding=utf-8
 
 " don't bother with vi compatibility
 set nocompatible
@@ -43,14 +13,16 @@ syntax enable
 " configure Vundle
 filetype on " without this vim emits a zero exit status, later, because of :ft off
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/vundle.vim
+call vundle#begin()
 
 " install Vundle bundles
-if filereadable(expand("D:\\programe\\Vim\\hankji_vim\\vimrc.bundles"))
-  source D:\\programe\\Vim\\hankji_vim\\vimrc.bundles
-  source D:\\programe\\Vim\\hankji_vim\\vimrc.bundles.local
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+  source ~/.vimrc.bundles.local
 endif
+
+call vundle#end()
 
 " ensure ftdetect et al work by including this after the Vundle stuff
 filetype plugin indent on
@@ -59,51 +31,30 @@ set autoindent
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
 set backspace=2                                              " Fix broken backspace in some setups
 set backupcopy=yes                                           " see :help crontab
+" set clipboard=unnamedplus                                        " yank and paste with the system clipboard
 set clipboard=unnamed                                        " yank and paste with the system clipboard
 set directory-=.                                             " don't store swapfiles in the current directory
+set encoding=utf-8
 set expandtab                                                " expand tabs to spaces
 set ignorecase                                               " case-insensitive search
 set incsearch                                                " search as you type
+set hlsearch                                                " search as you type
 set laststatus=2                                             " always show statusline
 set list                                                     " show trailing whitespace
-set listchars=tab:>-\,trail:\$
-set number                                                   " show line numbers
+set listchars=tab:▸\ ,trail:▫
 set number                                                   " show line numbers
 set ruler                                                    " show where you are
 set scrolloff=3                                              " show context above/below cursorline
-set shiftwidth=4                                             " normal mode indentation commands use 4 spaces
+set shiftwidth=2                                             " normal mode indentation commands use 2 spaces
 set showcmd
 set smartcase                                                " case-sensitive search if any caps
 set softtabstop=2                                            " insert mode tab and backspace use 2 spaces
-set tabstop=8                                                " actual tabs occupy 8 characters
+set tabstop=4                                                " actual tabs occupy 8 characters
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
-set tags=.tags,tags;/
-set autochdir
-set background=dark
-colorscheme solarized
-set guifont=Source\ Code\ Pro\ Semibold:h14
-set encoding=utf-8
-"let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled = 1
-"set guifont=Consolas\ for\ Powerline\ FixedD:h11
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-" old vim-powerline symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-" powerline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+set foldmethod=indent
+set foldlevel=10
 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
@@ -113,27 +64,44 @@ endif
 
 " keyboard shortcuts
 let mapleader = ','
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-map <leader>l :Align
-nmap <leader>a :Ack<space>
-nmap <leader>b :CtrlPBuffer<CR>
-nmap <leader>d :NERDTreeToggle<CR>
-nmap <leader>f :NERDTreeFind<CR>
-nmap <leader>t :CtrlP<CR>
-nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
-nmap <leader>] :TagbarToggle<CR>
-nmap <leader><space> :call whitespace#strip_trailing()<CR>
-nmap <leader>g :GitGutterToggle<CR>
-nmap <leader>c <Plug>Kwbd
-map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <leader>l :Align
+nnoremap <leader>a :Ag<space>
+nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>d :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap <leader>t :CtrlP<CR>
+nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
+nnoremap <leader>] :TagbarToggle<CR>
+nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
+nnoremap <leader>g :GitGutterToggle<CR>
+nnoremap <leader>c <Plug>Kwbd
+noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+
+" in case you forgot to sudo
+cnoremap w!! %!sudo tee > /dev/null %
 
 " plugin settings
 let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:NERDSpaceDelims=1
-let g:gitgutter_enabled = 0
+let g:gitgutter_enabled = 1
+let g:go_fmt_command = "goimports"
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+
+" ycm
+let g:ycm_server_python_interpreter='/usr/local/bin/python3'
+let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+
+set background=dark
+colorscheme solarized
 
 " enable gtags module
 " let g:gutentags_trace = 1
@@ -145,11 +113,11 @@ let g:gutentags_project_root = ['.git','.root']
 let g:gutentags_cache_dir = expand('~/.cache/tags')
 " forbid gutentags adding gtags databases
 let g:gutentags_auto_add_gtags_cscope = 0
+let $GTAGSLABEL = 'native-pygments'
+let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
-  let g:ackprg = 'ag --nogroup --column'
-
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
 
@@ -161,6 +129,7 @@ endif
 autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
 " md is markdown
 autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.md set spell
 " extra rails.vim help
 autocmd User Rails silent! Rnavcommand decorator      app/decorators            -glob=**/* -suffix=_decorator.rb
 autocmd User Rails silent! Rnavcommand observer       app/observers             -glob=**/* -suffix=_observer.rb
@@ -180,6 +149,9 @@ else
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
+" Don't copy the contents of an overwritten selection.
+vnoremap p "_dP
+
 " Go crazy!
 if filereadable(expand("~/.vimrc.local"))
   " In your .vimrc.local, you might like:
@@ -194,10 +166,9 @@ if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
-let g:vimwiki_list=[{'path':'D:\adminwork\wiki\vimwiki','path_html':'D:\adminwork\wiki\vimwiki\html',
-            \ 'auto_export': 1, 'template_path': 'D:\adminwork\wiki\vimwiki\template\',
-            \ 'template_default': 'def_template',
-            \ 'template_ext': '.html'}]
-
-map <S-F4> :VimwikiAll2HTML<cr>
-map <F4> :Vimwiki2HTML<cr>
+" let g:vimwiki_list=[{'path': '/Users/hankji/Documents/works/adminwork/wiki/vimwiki', 'path_html': '/Users/hankji/Documents/works/adminwork/wiki/vimwiki/html',
+"                    \ 'auto_export': 1, 'template_path': '/Users/hankji/Documents/works/adminwork/wiki/vimwiki/template/',
+"                    \ 'template_default': 'def_template',
+"                    \ 'template_ext': '.html'}]
+" map <S-F4> :VimwikiAll2HTML<cr>
+" map <F4> :Vimwiki2HTML<cr>

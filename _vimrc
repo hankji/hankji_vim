@@ -17,9 +17,9 @@ set rtp+=~/.vim/bundle/vundle.vim
 call vundle#begin()
 
 " install Vundle bundles
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
-  source ~/.vimrc.bundles.local
+if filereadable(expand("~/Documents/myself/hankji_vim/vimrc.bundles"))
+  source ~/Documents/myself/hankji_vim/vimrc.bundles
+  source ~/Documents/myself/hankji_vim/vimrc.bundles.local
 endif
 
 call vundle#end()
@@ -39,7 +39,7 @@ set expandtab                                                " expand tabs to sp
 set ignorecase                                               " case-insensitive search
 set incsearch                                                " search as you type
 set hlsearch                                                " search as you type
-set laststatus=2                                             " always show statusline
+" set laststatus=2                                             " always show statusline
 set list                                                     " show trailing whitespace
 set listchars=tab:▸\ ,trail:▫
 set number                                                   " show line numbers
@@ -54,7 +54,18 @@ set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
 set foldmethod=indent
-set foldlevel=10
+set foldlevel=20
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:go_metalinter_command = "golangci-lint"
+let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'golangci-lint']
 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
@@ -95,9 +106,11 @@ let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
+"let g:go_def_mode = 'godef'
+let g:go_def_mode = 'gopls'
 
 " ycm
-let g:ycm_server_python_interpreter='/usr/local/bin/python3'
+let g:ycm_server_python_interpreter='/usr/local/opt/python/bin/python3'
 let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
 
 set background=dark
@@ -105,6 +118,7 @@ colorscheme solarized
 
 " enable gtags module
 " let g:gutentags_trace = 1
+" let g:gutentags_define_advanced_commands = 1
 set cscopeprg='gtags-cscope'
 let g:gutentags_modules = ['ctags', 'gtags_cscope']
 " config project root markers.

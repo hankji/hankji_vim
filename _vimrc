@@ -41,7 +41,7 @@ set expandtab                                                " expand tabs to sp
 set ignorecase                                               " case-insensitive search
 set incsearch                                                " search as you type
 set hlsearch                                                " search as you type
-set laststatus=2                                             " always show statusline
+" set laststatus=2                                             " always show statusline
 set list                                                     " show trailing whitespace
 set listchars=tab:▸\ ,trail:▫
 set number                                                   " show line numbers
@@ -56,7 +56,18 @@ set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
 set foldmethod=indent
-set foldlevel=10
+set foldlevel=20
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:go_metalinter_command = "golangci-lint"
+let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'golangci-lint']
 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
@@ -108,6 +119,7 @@ colorscheme solarized
 
 " enable gtags module
 " let g:gutentags_trace = 1
+" let g:gutentags_define_advanced_commands = 1
 set cscopeprg='gtags-cscope'
 let g:gutentags_modules = ['ctags', 'gtags_cscope']
 " config project root markers.

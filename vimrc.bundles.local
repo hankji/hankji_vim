@@ -1,6 +1,7 @@
 " Bundle 'Lokaltog/vim-powerline'
-Bundle 'vim-airline/vim-airline'
-Bundle 'terryma/vim-multiple-cursors'
+Plug 'vim-airline/vim-airline'
+Plug 'terryma/vim-multiple-cursors'
 " Bundle 'valloric/youcompleteme'
 " Bundle 'bling/vim-airline'
-Bundle 'wsdjeg/FlyGrep.vim'
+Plug 'wsdjeg/FlyGrep.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}

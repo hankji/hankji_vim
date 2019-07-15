@@ -13,16 +13,18 @@ syntax enable
 " configure Vundle
 filetype on " without this vim emits a zero exit status, later, because of :ft off
 filetype off
-set rtp+=~/.vim/bundle/vundle.vim
-call vundle#begin()
+set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
 
+call plug#begin('~/.vim/plugged')
 " install Vundle bundles
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
-  source ~/.vimrc.bundles.local
+if filereadable(expand("~/myself/hankji_vim/vimrc.bundles"))
+  source ~/myself/hankji_vim/vimrc.bundles
+  source ~/myself/hankji_vim/vimrc.bundles.local
 endif
+call plug#end()
 
-call vundle#end()
+" call vundle#end()
 
 " ensure ftdetect et al work by including this after the Vundle stuff
 filetype plugin indent on
@@ -48,7 +50,7 @@ set scrolloff=3                                              " show context abov
 set shiftwidth=2                                             " normal mode indentation commands use 2 spaces
 set showcmd
 set smartcase                                                " case-sensitive search if any caps
-set softtabstop=2                                            " insert mode tab and backspace use 2 spaces
+set softtabstop=4                                            " insert mode tab and backspace use 2 spaces
 set tabstop=4                                                " actual tabs occupy 8 characters
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu                                                 " show a navigable menu for tab completion
@@ -95,10 +97,11 @@ let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
+let g:go_def_mode = 'gopls'
 
 " ycm
-let g:ycm_server_python_interpreter='/usr/local/bin/python3'
-let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+" let g:ycm_server_python_interpreter='/usr/bin/python3'
+" let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
 
 set background=dark
 colorscheme solarized
@@ -172,3 +175,56 @@ endif
 "                    \ 'template_ext': '.html'}]
 " map <S-F4> :VimwikiAll2HTML<cr>
 " map <F4> :Vimwiki2HTML<cr>
+
+" for coc plugin
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use U to show documentation in preview window
+nnoremap <silent> U :call <SID>show_documentation()<CR>
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>

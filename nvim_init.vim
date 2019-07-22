@@ -16,7 +16,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 " call vundle#begin()
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 " install Vundle bundles
 if filereadable(expand("~/myself/hankji_vim/vimrc.bundles"))
   source ~/myself/hankji_vim/vimrc.bundles
@@ -71,9 +71,9 @@ let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'golangci-lint']
 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
-if exists('$TMUX')  " Support resizing in tmux
-  set ttymouse=xterm2
-endif
+" if exists('$TMUX')  " Support resizing in tmux
+"   set ttymouse=xterm2
+" endif
 
 " keyboard shortcuts
 let mapleader = ','
@@ -109,6 +109,7 @@ let g:go_highlight_function_calls = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
 let g:go_def_mode = 'gopls'
+let g:go_doc_keywordprg_enabled = 0
 
 " ycm
 " let g:ycm_server_python_interpreter='/usr/bin/python3'
@@ -216,7 +217,16 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use U to show documentation in preview window
-nnoremap <silent> U :call <SID>show_documentation()<CR>
+set pyxversion=3
+let g:python3_host_prog = '/usr/bin/python3'
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocActionAsync('doHover')
+  endif
+endfunction
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
@@ -252,4 +262,5 @@ noremap ,lb :<C-U><C-R>=printf("Leaderf! rg -F --current-buffer -e %s ", expand(
 xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F --stayOpen -e %s ", leaderf#Rg#visual())<CR>
 " recall last search. If the result window is closed, reopen it.
 noremap go :<C-U>Leaderf! rg --stayOpen --recall<CR>
+
 nnoremap <C-P> :<C-u>Leaderf file<CR>

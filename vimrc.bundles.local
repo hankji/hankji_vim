@@ -3,7 +3,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'terryma/vim-multiple-cursors'
 " Bundle 'valloric/youcompleteme'
 " Bundle 'bling/vim-airline'
-Plug 'wsdjeg/FlyGrep.vim'
+" Plug 'wsdjeg/FlyGrep.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'wsdjeg/FlyGrep.vim'
 Plug 'NLKNguyen/papercolor-theme'

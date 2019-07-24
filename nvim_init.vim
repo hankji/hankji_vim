@@ -62,6 +62,10 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:NERDTreeWinSize=25
+let g:Tlist_WinWidth=25
+let g:tagbar_width = 25
+
 let g:indent_guides_enable_on_vim_startup = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -116,8 +120,8 @@ let g:go_doc_keywordprg_enabled = 0
 " let g:ycm_server_python_interpreter='/usr/bin/python3'
 " let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
 
-set background=dark
-colorscheme solarized
+set background=light
+colorscheme solarized8_flat
 
 " enable gtags module
 " let g:gutentags_trace = 1

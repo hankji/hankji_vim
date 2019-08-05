@@ -29,6 +29,10 @@ call plug#end()
 " ensure ftdetect et al work by including this after the Vundle stuff
 filetype plugin indent on
 
+" esc in insert mode
+inoremap kj <esc>
+" esc in command mode
+cnoremap kj <C-C>
 set autoindent
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
 set backspace=2                                              " Fix broken backspace in some setups
@@ -73,6 +77,10 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:go_metalinter_command = "golangci-lint"
 let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'golangci-lint']
+" your favorite style options
+let g:clang_format#style_options = {
+              \ "AccessModifierOffset" : -4,
+              \ "IndentWidth": 4}
 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
@@ -121,7 +129,7 @@ let g:go_doc_keywordprg_enabled = 0
 " let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
 
 set background=light
-colorscheme solarized8_flat
+colorscheme solarized8_high
 
 " enable gtags module
 " let g:gutentags_trace = 1
@@ -264,8 +272,8 @@ noremap ,lg :<C-U><C-R>=printf("Leaderf! rg --append -e %s ", expand("<cword>"))
 " search word under cursor literally only in current buffer
 noremap ,lb :<C-U><C-R>=printf("Leaderf! rg -F --current-buffer -e %s ", expand("<cword>"))<CR>
 " search visually selected text literally, don't quit LeaderF after accepting an entry
-xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F --stayOpen -e %s ", leaderf#Rg#visual())<CR>
+xnoremap ,gf :<C-U><C-R>=printf("Leaderf! rg -F --stayOpen -e %s ", leaderf#Rg#visual())<CR>
 " recall last search. If the result window is closed, reopen it.
-noremap go :<C-U>Leaderf! rg --stayOpen --recall<CR>
+noremap ,go :<C-U>Leaderf! rg --stayOpen --recall<CR>
 
 nnoremap <C-P> :<C-u>Leaderf file<CR>

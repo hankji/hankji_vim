@@ -1,1 +1,2 @@
 Plug 'rhysd/vim-clang-format'
+Plug 'Yggdroot/indentLine'

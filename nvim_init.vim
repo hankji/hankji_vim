@@ -61,6 +61,8 @@ set wildmenu                                                 " show a navigable 
 set wildmode=longest,list,full
 set foldmethod=indent
 set foldlevel=20
+set cursorcolumn
+set cursorline
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -128,8 +130,8 @@ let g:go_doc_keywordprg_enabled = 0
 " let g:ycm_server_python_interpreter='/usr/bin/python3'
 " let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
 
-set background=light
-colorscheme solarized8_high
+set background=dark
+colorscheme solarized
 
 " enable gtags module
 " let g:gutentags_trace = 1

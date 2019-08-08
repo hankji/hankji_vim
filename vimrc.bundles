@@ -3,7 +3,7 @@
 " Maximum Awesome.
 " Please create ~/.vimrc.bundles.local and add any extra bundles you want there
 Plug 'airblade/vim-gitgutter'
-" Plug 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 Plug 'austintaylor/vim-indentobject'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'mustache/vim-mustache-handlebars'
@@ -14,7 +14,7 @@ Plug 'Yggdroot/LeaderF'
 Plug 'majutsushi/tagbar'
 " Plug 'rking/ag.vim'
 " Plug 'msanders/snipmate.vim'
-Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'nathanaelkane/vim-indent-guides'
 Plug 'pangloss/vim-javascript'
 Plug 'wookiehangover/jshint.vim'
 Plug 'scrooloose/nerdtree'

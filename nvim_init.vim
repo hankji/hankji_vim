@@ -48,7 +48,15 @@ set hlsearch                                                " search as you type
 " set laststatus=2                                             " always show statusline
 set list                                                     " show trailing whitespace
 set listchars=tab:▸\ ,trail:▫
-set number                                                   " show line numbers
+set number
+set relativenumber                                                   " show line numbers
+augroup relative_numbser
+  autocmd!
+  autocmd InsertEnter * :set norelativenumber
+  autocmd InsertLeave * :set relativenumber
+augroup END
+
+set switchbuf=usetab
 set ruler                                                    " show where you are
 set scrolloff=3                                              " show context above/below cursorline
 set shiftwidth=2                                             " normal mode indentation commands use 2 spaces
@@ -67,6 +75,9 @@ set cursorline
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+set hidden
+let g:airline#extensions#tabline#enabled = 1
 
 let g:NERDTreeWinSize=25
 let g:Tlist_WinWidth=25
@@ -98,11 +109,8 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <leader>l :Align
 nnoremap <leader>a :Ag<space>
-nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>d :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
-nnoremap <leader>t :CtrlP<CR>
-nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 nnoremap <leader>] :TagbarToggle<CR>
 nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 nnoremap <leader>g :GitGutterToggle<CR>
@@ -113,7 +121,6 @@ noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo '
 cnoremap w!! %!sudo tee > /dev/null %
 
 " plugin settings
-let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:NERDSpaceDelims=1
 let g:gitgutter_enabled = 1
 let g:go_fmt_command = "goimports"
@@ -151,9 +158,6 @@ let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
 " fdoc is yaml

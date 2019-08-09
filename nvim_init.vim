@@ -78,6 +78,8 @@ set statusline+=%*
 
 set hidden
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#coc#enabled = 1
 
 let g:NERDTreeWinSize=25
 let g:Tlist_WinWidth=25
@@ -88,7 +90,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:go_metalinter_command = "golangci-lint"
+let g:go_metalinter_command = "/home/megvii/go/bin/golangci-lint run"
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_enabeld = ['deadcode', 'errcheck', 'gosimple', 'govet', 'staticcheck', 'typecheck', 'unused', 'varcheck']
 let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'golangci-lint']
 " your favorite style options
 let g:clang_format#style_options = {

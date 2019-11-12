@@ -9,7 +9,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'mustache/vim-mustache-handlebars'
 " Plug 'kchmck/vim-coffee-script'
 " Plug 'kien/ctrlp.vim'
-Plug 'Yggdroot/LeaderF'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " Plug 'leafgarland/typescript-vim'
 Plug 'majutsushi/tagbar'
 " Plug 'rking/ag.vim'
@@ -40,9 +40,11 @@ Plug 'vim-scripts/matchit.zip'
 " Bundle 'vim-scripts/vimwiki'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plugin 'nsf/gocode', {'rtp': 'vim/'}
-Plug 'mdempsky/gocode', {'rtp': 'vim/'}
+" Plug 'mdempsky/gocode', {'rtp': 'vim/'}
+" Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+
 Plug 'junegunn/gv.vim'
 " Plug 'Valloric/YouCompleteMe'
 

@@ -57,3 +57,4 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'NLKNguyen/papercolor-theme'
 Plug 'lifepillar/vim-solarized8'
+Plug 'arzg/vim-colors-xcode'

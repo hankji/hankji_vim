@@ -12,5 +12,6 @@ let g:gutentags_cache_dir = expand('~/.cache/tags')
 let g:gutentags_auto_add_gtags_cscope = 0
 " change focus to quickfix window after search (optional).
 let g:gutentags_plus_switch = 1
-let $GTAGSLABEL = 'native-pygments'
+" let $GTAGSLABEL = 'native-pygments'
+let $GTAGSLABEL = 'pygments'
 let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'

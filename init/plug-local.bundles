@@ -1,3 +1,4 @@
 Plug 'rhysd/vim-clang-format'
+Plug 'morhetz/gruvbox'
 Plug 'Yggdroot/indentLine'
 Plug 'chuling/vim_equinusocio_material'

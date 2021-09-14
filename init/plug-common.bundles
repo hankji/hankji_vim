@@ -59,3 +59,5 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'NLKNguyen/papercolor-theme'
 Plug 'lifepillar/vim-solarized8'
 Plug 'arzg/vim-colors-xcode'
+Plug 'morhetz/gruvbox'
+Plug 'sebdah/vim-delve'

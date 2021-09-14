@@ -1,4 +1,4 @@
-
+let g:Lf_PreviewInPopup = 1
 " search word under cursor, the pattern is treated as regex, and enter normal mode directly
 noremap ,lf :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
 " search word under cursor, the pattern is treated as regex,
@@ -11,4 +11,5 @@ xnoremap ,gf :<C-U><C-R>=printf("Leaderf! rg -F --stayOpen -e %s ", leaderf#Rg#v
 " recall last search. If the result window is closed, reopen it.
 noremap ,go :<C-U>Leaderf! rg --stayOpen --recall<CR>
 
-nnoremap <C-P> :<C-u>Leaderf file<CR>
+nnoremap <C-P> :<C-u>Leaderf --popup file<CR>
+

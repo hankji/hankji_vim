@@ -111,3 +111,5 @@ vnoremap p "_dP
 " Use U to show documentation in preview window
 set pyxversion=3
 let g:python3_host_prog = '/usr/bin/python3'
+
+command! DelOtherBuf %bd|e#|bd#

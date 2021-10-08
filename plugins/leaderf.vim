@@ -4,6 +4,17 @@ let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu S
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 let g:UseCache = 0
 " let g:Lf_UseMemoryCache = 0
+let g:Lf_WildIgnore = {
+            \ 'dir': [],
+            \ 'file': ['*.js']
+            \}
+
+let g:Lf_RgConfig = [
+        \ "--max-columns=150",
+		\ "--type-not js",
+        \ "--glob=!git/*",
+        \ "--hidden"
+    \ ]
 
 " search word under cursor, the pattern is treated as regex, and enter normal mode directly
 noremap ,lf :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>

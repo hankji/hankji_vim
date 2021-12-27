@@ -37,8 +37,8 @@ Plug 'vim-scripts/Align'
 " Plug 'vim-scripts/greplace.vim'
 Plug 'vim-scripts/matchit.zip'
 " Bundle 'vim-scripts/vimwiki'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'skywind3000/gutentags_plus'
+" Plug 'ludovicchabant/vim-gutentags'
+" Plug 'skywind3000/gutentags_plus'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plugin 'nsf/gocode', {'rtp': 'vim/'}
 " Plug 'mdempsky/gocode', {'rtp': 'vim/'}

@@ -1,3 +1,4 @@
+noremap <F2> :LeaderfFunction!<cr>
 let g:Lf_PreviewInPopup = 1
 let g:Lf_PreviewResult = {
             \ 'File': 0,

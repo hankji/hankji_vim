@@ -9,3 +9,4 @@ if executable('ag')
 endif
 
 colorscheme solarized8_high
+set completeopt=menu,menuone,noselect

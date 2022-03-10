@@ -58,3 +58,6 @@ LoadScript init/init-style.vim
 " 自定义按键
 LoadScript init/init-keymaps.vim
 
+" lsp
+lua require('lsp/nvim-lsp')
+lua require('plugins/nvim-cmp')

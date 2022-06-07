@@ -6,7 +6,7 @@ noremap <C-l> <C-w>l
 noremap <leader>l :Align
 nnoremap <leader>a :Ag<space>
 nnoremap <leader>d :NERDTreeToggle<CR>
-" nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>] :TagbarToggle<CR>
 nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 nnoremap <leader>g :GitGutterToggle<CR>

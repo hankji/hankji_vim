@@ -10,6 +10,7 @@ vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<C
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
+  -- require "lsp_signature".on_attach()  -- Note: add in lsp client on-attach for plug ray-x/lsp_signature.nvim
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
@@ -44,3 +45,4 @@ for _, lsp in pairs(servers) do
     capabilities = capabilities
   }
 end
+

@@ -62,3 +62,4 @@ LoadScript init/init-keymaps.vim
 lua require('lsp/nvim-lsp')
 lua require('plugins/nvim-cmp')
 lua require('plugins/nvim-telescope')
+lua require('plugins/nvim-treesitter')
